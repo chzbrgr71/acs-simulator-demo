@@ -18,6 +18,7 @@ SIMULATION_DELAY=15
 
 def simulate():
   hostname = socket.gethostname()
+  str(hostname)
   msgQueue = Queue(account_name = AZURE_STORAGE_ACCOUNT_NAME, account_key=AZURE_STORAGE_ACCOUNT_KEY, queue_name=AZURE_STORAGE_QUEUE_NAME)
 
   msg = hostname + ': Simulating until stopped'
@@ -36,9 +37,5 @@ def simulate():
     time.sleep(int(SIMULATION_DELAY))
 
 if __name__ == "__main__":
-    try:
+      str('Calling simulate code')
       simulate()
-    except:
-      e = sys.exc_info()[0]
-      hostname = socket.gethostname()
-      # notify.error(hostname + ": ACS Logging simulation failed")
