@@ -22,12 +22,13 @@ def simulate():
 
   msg = hostname + ': Simulating until stopped'
   msg = 'Simulator: ' + hostname + ' running until stopped.'
-  # echo msg
+  str(msg)
   # notify.info(msg)
 
   _actions = 1
   while True:
     data = 'Writing message #' + str(_actions) + ' to Queue.'
+    str(data)
     msgQueue.enqueue(data)
     _actions = _actions + 1
     msgQueue.close()
