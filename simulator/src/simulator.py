@@ -22,7 +22,7 @@ def simulate():
 
   msg = hostname + ': Simulating until stopped'
   msg = 'Simulator: ' + hostname + ' running until stopped.'
-  echo msg
+  # echo msg
   # notify.info(msg)
 
   _actions = 1

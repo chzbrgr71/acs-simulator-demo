@@ -1,9 +1,6 @@
 '''
 Helper class for working with Slack webhooks.
 '''
-
-import config
-
 import json
 import requests
 
