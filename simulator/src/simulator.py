@@ -14,13 +14,16 @@ import sys
 import time
 import traceback
 import notify
-import logging
+from log import Log
 
 def doSomething():
   hostname = socket.gethostname()
   summary = hostname + ": Processing Status @ " + str(time.ctime())
   print(summary)
   notify.info(summary)
+  log = Log()
+  log.debug(summary)
+  log.info(summary)
   
 if __name__ == "__main__":
     while True:

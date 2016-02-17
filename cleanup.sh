@@ -3,3 +3,4 @@ docker rm $(docker ps -a -q)
 docker rmi chzbrgr71/acs-simulator
 docker ps -a
 docker images
+rm -rf acs-simulator-demo

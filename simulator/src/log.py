@@ -5,12 +5,11 @@ import logging
 import os
 
 class Log:
-    def __init__(self, name = "acs-simulated-log-test"):
+    def __init__(self, name = "acs-simulator-demo-log"):
         output_dir = 'logs'
 
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
-
 
         self.logger = logging.getLogger(name)
         self.logger.setLevel(logging.DEBUG)
