@@ -25,9 +25,10 @@ def doSomething():
     log.debug(summary)
     log.info(summary)
     # Write message to SB Queue
-    bus_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')
-    msg = Message(summary)
-    bus_service.send_queue_message('statistics', msg)
+    sb_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')
+    # msg = Message(summary)
+    msg = Message(b'Test Message')
+    sb_service.send_queue_message('statistics', msg)
   
 if __name__ == "__main__":
     while True:
