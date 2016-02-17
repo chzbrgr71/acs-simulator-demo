@@ -13,6 +13,7 @@ import sys
 import time
 import traceback
 import notify
+import logging
 from messageQueue import Queue
 
 def simulate():
@@ -27,11 +28,23 @@ def simulate():
     msgQueue.close()
 
 if __name__ == "__main__":
-      str('Starting simulate loop code')
-      hostname = socket.gethostname()
-      msg = 'Simulator: ' + hostname + ' running until stopped.'
-      str(msg)
-      # notify.info(msg)
-      while True:
+    logger = logging.getLogger('scope.name')
+    file_log_handler = logging.FileHandler('logfile.log')
+    logger.addHandler(file_log_handler)
+
+    stderr_log_handler = logging.StreamHandler()
+    logger.addHandler(stderr_log_handler)
+
+    # nice output format
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    file_log_handler.setFormatter(formatter)
+    stderr_log_handler.setFormatter(formatter)
+    logger.info('Starting simulate loop code')
+    #logger.error('Error message')
+    
+    hostname = socket.gethostname()
+    msg = 'Simulator: ' + hostname + ' running until stopped.'
+    logger.info(msg)
+    while True:
         simulate()
         time.sleep(15)
