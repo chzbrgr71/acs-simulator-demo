@@ -14,18 +14,6 @@ import time
 import traceback
 import notify
 import logging
-from messageQueue import Queue
-
-def simulate():
-  msgQueue = Queue(account_name = 'briardockerstorage', account_key='y3KzKM9Dql9hTJXZPBkW+VqQX88OKjKQPREbABljGJepjDYifxn8cJG5SzKmoyVQ8QnTFRfR+a6rd7eJ3iwdCw==', queue_name='briaracsqueue')
-  _actions = 1
-  while True:
-    data = 'Writing message #' + str(_actions) + ' to Queue.'
-    str(data)
-    # notify.info(data)
-    msgQueue.enqueue(data)
-    _actions = _actions + 1
-    msgQueue.close()
 
 if __name__ == "__main__":
     logger = logging.getLogger('scope.name')
@@ -45,6 +33,3 @@ if __name__ == "__main__":
     hostname = socket.gethostname()
     msg = 'Simulator: ' + hostname + ' running until stopped.'
     logger.info(msg)
-    while True:
-        simulate()
-        time.sleep(15)
