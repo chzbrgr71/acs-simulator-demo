@@ -15,18 +15,21 @@ import time
 import traceback
 import notify
 from log import Log
+from azure.servicebus import ServiceBusService, Message, Queue
 
 def doSomething():
-  hostname = socket.gethostname()
-  summary = hostname + ": Processing Status @ " + str(time.ctime())
-  print(summary)
-  notify.info(summary)
-  log = Log()
-  log.debug(summary)
-  log.info(summary)
+    hostname = socket.gethostname()
+    summary = hostname + ": Processing Status @ " + str(time.ctime())
+    notify.info(summary)
+    log = Log()
+    log.debug(summary)
+    log.info(summary)
+    # Write message to SB Queue
+    bus_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')
+    msg = Message(summary)
+    bus_service.send_queue_message('statistics', msg)
   
 if __name__ == "__main__":
     while True:
-        # Delay for 10 seconds
         time.sleep(5)
         doSomething()
