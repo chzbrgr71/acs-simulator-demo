@@ -1,6 +1,7 @@
 '''
 Helper class for working with Slack webhooks.
 '''
+
 import json
 import requests
 
@@ -9,7 +10,7 @@ def send(msg, channel="general"):
         "channel": "#" + channel,
         "text": msg
     }
-    requests.post(config.SLACK_WEBHOOK, json.dumps(payload))
+    requests.post('https://hooks.slack.com/services/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', json.dumps(payload))
 
 def info(msg):
     #send(msg, 'info')
