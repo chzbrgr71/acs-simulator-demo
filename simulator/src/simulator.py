@@ -17,11 +17,13 @@ import notify
 import logging
 
 def doSomething():
-  summary = "Processing Status"
+  hostname = socket.gethostname()
+  summary = hostname + ": Processing Status @ " + str(time.ctime())
   print(summary)
+  notify.info(summary)
   
 if __name__ == "__main__":
     while True:
         # Delay for 10 seconds
-        time.sleep(10)
+        time.sleep(5)
         doSomething()
