@@ -27,7 +27,8 @@ def doSomething():
     # Write message to SB Queue
     sb_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')
     # msg = Message(summary)
-    msg = Message(b'Test Message')
+    # msg = Message(b'Test Message')
+    msg = Message(summary.encode("utf-8"))
     sb_service.send_queue_message('statistics', msg)
   
 if __name__ == "__main__":
