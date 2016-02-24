@@ -1,9 +1,4 @@
-FROM python
-
-RUN pip install --upgrade pip
-
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+FROM chzbrgr71/acs-simulator
 
 COPY src src
 
