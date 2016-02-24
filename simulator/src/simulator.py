@@ -24,25 +24,17 @@ def doSomething():
     # Write to log file
     log = Log()
     log.info(logMessage)
-
-    # Write message to SB Queue
-    sb_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')
-    for x in range(1, 6):
+    x=0
+    
+    while True:
+        x=x+1
+        time.sleep(5)
+        # Write message to SB Queue
+        sb_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')    
         msg = Message(logMessage.encode("utf-8"))
         msg.custom_properties={'deviceid':str(x),'temp':'80.8','pressure':'68.23','humidity':'50','windspeed':'12.5'}
         sb_service.send_queue_message('statistics', msg)
-        notify.info("Message #" + str(x) + " posted.")
+        log.info("Message #" + str(x) + " posted.")
                
-    # Pull messages from SB Queue and notify
-    for x in range(1, 6):
-        rtnmsg = sb_service.receive_queue_message('statistics', peek_lock=False, timeout=30)
-        if rtnmsg is None:
-            notify.info("Zero messages in Service Bus Queue")
-        else:
-            customvalue = str(rtnmsg.custom_properties['deviceid'])
-            notify.info(customvalue)
-                
 if __name__ == "__main__":
-    #while True:
-    #    time.sleep(5)
-        doSomething()
+    doSomething()
