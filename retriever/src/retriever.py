@@ -15,26 +15,24 @@ def doLoop():
     # Write to log file
     log = Log()
     log.info(logMessage)
-
+    sb_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')
+        
     while True:
-        time.sleep(2)
-        sb_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')
-        rtnmsg = sb_service.receive_queue_message('statistics', peek_lock=False, timeout=15)
-        queuelength = 1
-        try:
-            testval = str(rtnmsg.custom_properties['deviceid'])
-        except:
-            queuelength = 0
-            
-        if queuelength=0:
-            notify.info("Zero messages in Service Bus Queue")
+        sbqueue = sb_service.get_queue('statistics')
+        queuelength = sbqueue.message_count
+        log.info(str(queuelength))
+        if queuelength<1:
+            notify.info("No messages in Service Bus Queue")
         else:
+            rtnmsg = sb_service.receive_queue_message('statistics', peek_lock=False, timeout=30)
+            data_body = str(rtnmsg.body)
+            log.info("Mesage body: " + data_body)
             data_deviceid = str(rtnmsg.custom_properties['deviceid'])
             data_temp = str(rtnmsg.custom_properties['temp'])
             data_pressure = str(rtnmsg.custom_properties['pressure'])
             data_humidity = str(rtnmsg.custom_properties['humidity'])
             data_windspeed = str(rtnmsg.custom_properties['windspeed'])
-            notify.info("Temperature: " + data_temp)          
+            notify.info("Temperature: " + data_temp + " >Message: " + data_body)          
                                 
 if __name__ == "__main__":
     doLoop()
