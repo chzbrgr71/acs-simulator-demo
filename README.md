@@ -14,14 +14,8 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
  
   * Create an Azure Service Bus Queue, Azure documentDB, and Slack Channel.
   * Pull base container from Docker Hub: 
+
   ```
-  git status
-  git add
-  git commit
-  ```
-  
-  ```
-  
   docker pull chzbrgr71/acs-simulator-demo:base
   ```
   
