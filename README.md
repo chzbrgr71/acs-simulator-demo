@@ -15,15 +15,26 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
   * Create an Azure Service Bus Queue, Azure documentDB, and Slack Channel.
   * Pull base container from Docker Hub: 
   ```
+  git status
+  git add
+  git commit
+  ```
+  
+  ```
+  
   docker pull chzbrgr71/acs-simulator-demo:base
   ```
-  * Build the 3 containers (simulator, retriever, slacker). 
+  
+  * Build the 3 containers (simulator, retriever, slacker):
+  
   ```
   docker build -t chzbrgr71/acs-simulator simulator
   docker build -t chzbrgr71/acs-retriever retriever
   docker build -t chzbrgr71/acs-slacker slacker 
   ```
+  
   * Run docker-compose. With 4 simulators and 1 retriever, the queue should increase.
+  
   ```
   docker-compose up -d
   docker-compose scale simulate=4
