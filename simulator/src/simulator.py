@@ -26,7 +26,7 @@ def doSomething():
     
     while True:
         x=x+1
-        time.sleep(5)
+        time.sleep(2)
         # Write message to SB Queue
         sb_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')
         msg_text = "Update number: " + str(x)    

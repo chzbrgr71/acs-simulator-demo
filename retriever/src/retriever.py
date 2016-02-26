@@ -14,7 +14,7 @@ from log import Log
 from azure.servicebus import ServiceBusService, Message, Queue
 import pydocumentdb.document_client as document_client
 
-def doLoop():
+def retrieve():
     # Write to log file and update Slack
     hostname = socket.gethostname()
     logMessage = "RETRIEVER (" + hostname + "): Pulling queue messages and writing to DB starting @ " + str(time.ctime())
@@ -29,8 +29,7 @@ def doLoop():
         sbqueue = sb_service.get_queue('statistics')
         queuelength = sbqueue.message_count
         if queuelength<1:
-            notify.info("No messages in Service Bus Queue")
-            log.info("No messages in Service Bus Queue")
+            log.info("Queue is empty")
         else:
             # Gather variables
             rtnmsg = sb_service.receive_queue_message('statistics', peek_lock=False, timeout=30)
@@ -40,32 +39,25 @@ def doLoop():
             data_pressure = str(rtnmsg.custom_properties['pressure'])
             data_humidity = str(rtnmsg.custom_properties['humidity'])
             data_windspeed = str(rtnmsg.custom_properties['windspeed'])
-            log.info("Debug Info: Temperature: " + data_temp + " > Message: " + data_body)
-            # Write to Azure DocumentDB
-            client = document_client.DocumentClient('https://acs1.documents.azure.com:443/', {'masterKey': "N0CLphgulonYd/ZEft0ArUGLAt1lgjG/yWbQTEy/QoZzq2bJTLYPj+t+lsrDdxVNXn43i5f8HVnh4jwvrL/KzQ=="})
-            # Attempt to delete the database.  This allows this to be used to recreate as well as create
-            try:
-                db = next((data for data in client.ReadDatabases() if data['id'] == 'acs-simulator-demo'))
-                client.DeleteDatabase(db['_self'])
-            except:
-                pass
-
-            # Create database
-            db = client.CreateDatabase({ 'id': 'acs-simulator-demo' })
-
-            # Create collection
-            collection = client.CreateCollection(db['_self'],{ 'id': 'statistics' }, { 'offerType': 'S1' })
-
+            data_timestamp = str(time.ctime())
+            
+            # Connect to Azure DocumentDB
+            client = document_client.DocumentClient('https://acs1.documents.azure.com:443', {'masterKey': "N0CLphgulonYd/ZEft0ArUGLAt1lgjG/yWbQTEy/QoZzq2bJTLYPj+t+lsrDdxVNXn43i5f8HVnh4jwvrL/KzQ=="})
+            db = next((data for data in client.ReadDatabases() if data['id'] == 'acs-demo'))
+            collection = next((coll for coll in client.ReadCollections(db['_self']) if coll['id'] == 'stats'))
+            
             # Create document
-            document = client.CreateDocument('statistics',
-                { 'id': 'device-measurements',
-                'Body': data_body,
-                'Device ID': data_deviceid,
-                'Temperature': data_temp,
-                'Pressure': data_pressure,
-                'Humidity': data_humidity,
-                'Windspeed': data_windspeed,
-                'name': 'device-measurements' 
-                })                    
+            document = client.CreateDocument(collection['_self'],
+                { 
+                    'Device ID': data_deviceid,
+                    'TimeStamp': data_timestamp,
+                    'Temperature': data_temp,
+                    'Pressure': data_pressure,
+                    'Humidity': data_humidity,
+                    'Windspeed': data_windspeed,
+                    'Body': data_body
+                }) 
+            log.info("Added document to documentDB")
+                                  
 if __name__ == "__main__":
-    doLoop()
+    retrieve()
