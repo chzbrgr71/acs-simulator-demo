@@ -1,6 +1,6 @@
 slacker:
-  image: chzbrgr71/acs-slacker
+  image: chzbrgr71/acs-simulator-demo:slacker
 simulate:
-  image: chzbrgr71/acs-simulator
+  image: chzbrgr71/acs-simulator-demo:simulator
 retrieve:
-  image: chzbrgr71/acs-retriever
+  image: chzbrgr71/acs-simulator-demo:retriever

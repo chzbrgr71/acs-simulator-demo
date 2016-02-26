@@ -19,26 +19,28 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
   docker pull chzbrgr71/acs-simulator-demo:base
   ```
   
-  * Build the 3 containers (simulator, retriever, slacker):
+  * Build the 3 containers (simulator, retriever, slacker). Or run `setup.sh`:
   
   ```
-  docker build -t chzbrgr71/acs-simulator simulator
-  docker build -t chzbrgr71/acs-retriever retriever
-  docker build -t chzbrgr71/acs-slacker slacker 
+  docker build -t chzbrgr71/acs-simulator-demo:simulator simulator
+  docker build -t chzbrgr71/acs-simulator-demo:retriever retriever
+  docker build -t chzbrgr71/acs-simulator-demo:slacker slacker
   ```
   
-  * Run docker-compose. With 4 simulators and 1 retriever, the queue should increase.
+  * Run docker-compose. With 4 simulators and 1 retriever, the queue should increase. 
   
   ```
   docker-compose up -d
   docker-compose scale simulate=4
   docker-compose scale retrieve=1
+  
+  docker-compose stop
   ```
   
 ## Running the demo
 
-  * Everything can be run as above or the `setup.sh` can be used to get everything started.
   * Use `docker-compose scale` to increase/decrease each container and monitor queue length.
+  * Containers will be pulled from Docker Hub.
   * With Slack open, the slacker container will provide status of the queue every few seconds.
   * Future will scale up/down in Azure Container Service.
   
