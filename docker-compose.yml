@@ -1,18 +1,6 @@
-simulate:
-  image: acs-logging-test-simulate
-  environment:
-    - SIMULATION_ACTIONS=0
-    - SIMULATION_DELAY=15 
-    - SMTP_PASSWORD=password
-  volumes_from:
-   - base
-analyze:
-  image: acs-logging-test-analyze
-  environment:
-    - SMTP_PASSWORD=password
-  volumes_from:
-   - base
 slacker:
-  image: acs-logging-test-slacker
-  volumes_from:
-   - base  
+  image: chzbrgr71/acs-slacker
+simulate:
+  image: chzbrgr71/acs-simulator
+retrieve:
+  image: chzbrgr71/acs-retriever
