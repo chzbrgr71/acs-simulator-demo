@@ -22,8 +22,15 @@ def retrieve():
     log.info(logMessage)
     notify.info(logMessage)
     
+    # Gather environment variables
+    AZURE_SB_SERVICE_NAMESPACE = os.getenv('AZURE_SB_SERVICE_NAMESPACE')
+    AZURE_SB_SHARED_ACCESS_KEY_NAME = os.getenv('AZURE_SB_SHARED_ACCESS_KEY_NAME')
+    AZURE_SB_SHARED_ACCESS_KEY = os.getenv('AZURE_SB_SHARED_ACCESS_KEY')
+    AZURE_DOCUMENTDB_URI = os.getenv('AZURE_DOCUMENTDB_URI')
+    AZURE_DOCUMENTDB_KEY = os.getenv('AZURE_DOCUMENTDB_KEY')
+    
     # Connect to Azure Service Bus
-    sb_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')
+    sb_service = ServiceBusService(service_namespace=AZURE_SB_SERVICE_NAMESPACE,shared_access_key_name=AZURE_SB_SHARED_ACCESS_KEY_NAME,shared_access_key_value=AZURE_SB_SHARED_ACCESS_KEY)
         
     while True:
         sbqueue = sb_service.get_queue('statistics')
@@ -42,7 +49,7 @@ def retrieve():
             data_timestamp = str(time.ctime())
             
             # Connect to Azure DocumentDB
-            client = document_client.DocumentClient('https://acs1.documents.azure.com:443', {'masterKey': "N0CLphgulonYd/ZEft0ArUGLAt1lgjG/yWbQTEy/QoZzq2bJTLYPj+t+lsrDdxVNXn43i5f8HVnh4jwvrL/KzQ=="})
+            client = document_client.DocumentClient(AZURE_DOCUMENTDB_URI, {'masterKey': AZURE_DOCUMENTDB_KEY})
             db = next((data for data in client.ReadDatabases() if data['id'] == 'acs-demo'))
             collection = next((coll for coll in client.ReadCollections(db['_self']) if coll['id'] == 'stats'))
             

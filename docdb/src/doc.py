@@ -8,7 +8,7 @@ def doMain():
     log = Log()
     log.info(logMessage)
     
-    client = document_client.DocumentClient('https://acs1.documents.azure.com:443', {'masterKey': "N0CLphgulonYd/ZEft0ArUGLAt1lgjG/yWbQTEy/QoZzq2bJTLYPj+t+lsrDdxVNXn43i5f8HVnh4jwvrL/KzQ=="})
+    client = document_client.DocumentClient(AZURE_DOCUMENTDB_URI, {'masterKey': AZURE_DOCUMENTDB_KEY})
     log.info("Connected to DocDB")
     data_body = 'device memo'
     data_deviceid = 'mydevice1'

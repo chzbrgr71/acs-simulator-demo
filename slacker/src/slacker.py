@@ -16,8 +16,14 @@ def updateSlack():
     log = Log()
     log.info(logMessage)
     notify.info(logMessage)  
+    
+    # Gather environment variables
+    AZURE_SB_SERVICE_NAMESPACE = os.getenv('AZURE_SB_SERVICE_NAMESPACE')
+    AZURE_SB_SHARED_ACCESS_KEY_NAME = os.getenv('AZURE_SB_SHARED_ACCESS_KEY_NAME')
+    AZURE_SB_SHARED_ACCESS_KEY = os.getenv('AZURE_SB_SHARED_ACCESS_KEY')
+    
     # Connect to Azure Service Bus
-    sb_service = ServiceBusService(service_namespace='acslogging',shared_access_key_name='RootManageSharedAccessKey',shared_access_key_value='gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM=')
+    sb_service = ServiceBusService(service_namespace=AZURE_SB_SERVICE_NAMESPACE,shared_access_key_name=AZURE_SB_SHARED_ACCESS_KEY_NAME,shared_access_key_value=AZURE_SB_SHARED_ACCESS_KEY)
         
     while True:
         # Delay for 6 seconds

@@ -2,15 +2,18 @@
 Helper class for working with Slack webhooks.
 '''
 
+import os
 import json
 import requests
 
 def send(msg, channel="general"):
     payload = {
-        "channel": "#" + channel,
-        "text": msg
-    }
-    requests.post('https://hooks.slack.com/services/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', json.dumps(payload))
+                "channel": "#" + channel,
+                "text": msg
+              }
+    # Gather environment variables
+    SLACK_CHANNEL = os.getenv('SLACK_CHANNEL')
+    requests.post(SLACK_CHANNEL, json.dumps(payload))
 
 def info(msg):
     #send(msg, 'info')

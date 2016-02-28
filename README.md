@@ -13,7 +13,8 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
 ## How to setup
  
   * Create an Azure Service Bus Queue, Azure documentDB, and Slack Channel.
-  * Pull base container from Docker Hub: 
+  * When running containers, you must update the below environment variables
+  * To save time, you can pull base container from Docker Hub and build the containers in advance 
 
   ```
   docker pull chzbrgr71/acs-simulator-demo:base
@@ -37,6 +38,14 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
   docker-compose stop
   ```
   
+  * Environment variables:
+    * AZURE_SB_SERVICE_NAMESPACE
+    * AZURE_SB_SHARED_ACCESS_KEY_NAME
+    * AZURE_SB_SHARED_ACCESS_KEY
+    * AZURE_DOCUMENTDB_URI
+    * AZURE_DOCUMENTDB_KEY
+    * SLACK_CHANNEL
+  
 ## Running the demo
 
   * Use `docker-compose scale` to increase/decrease each container and monitor queue length.
@@ -47,6 +56,6 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
 ## To do
 
   - [x] Create initial container images and test on single docker vm
-  - [ ] Need to create environment variables for Azure queues, documentDB, etc. Env variables will be declared in container definition
+  - [x] Need to create environment variables for Azure queues, documentDB, etc. Env variables will be declared in container definition
   - [ ] Integrate with ACS
   - [ ] Create Azure Web App to display results
