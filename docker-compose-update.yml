@@ -1,0 +1,23 @@
+slacker:
+  image: chzbrgr71/acs-simulator-demo:slacker
+  environment:
+    - AZURE_SB_SERVICE_NAMESPACE=<add your value here>
+    - AZURE_SB_SHARED_ACCESS_KEY_NAME=<add your value here>
+    - AZURE_SB_SHARED_ACCESS_KEY=<add your value here>
+    - SLACK_CHANNEL=<add your value here>
+simulate:
+  image: chzbrgr71/acs-simulator-demo:simulator
+  environment:  
+    - AZURE_SB_SERVICE_NAMESPACE=<add your value here>
+    - AZURE_SB_SHARED_ACCESS_KEY_NAME=<add your value here>
+    - AZURE_SB_SHARED_ACCESS_KEY=<add your value here>
+    - SLACK_CHANNEL=<add your value here>
+retrieve:
+  image: chzbrgr71/acs-simulator-demo:retriever
+  environment:  
+    - AZURE_SB_SERVICE_NAMESPACE=<add your value here>
+    - AZURE_SB_SHARED_ACCESS_KEY_NAME=<add your value here>
+    - AZURE_SB_SHARED_ACCESS_KEY=<add your value here>
+    - SLACK_CHANNEL=<add your value here>
+    - AZURE_DOCUMENTDB_URI=<add your value here>
+    - AZURE_DOCUMENTDB_KEY=<add your value here>
