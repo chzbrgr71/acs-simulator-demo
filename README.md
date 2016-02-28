@@ -14,13 +14,16 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
  
   * Create an Azure Service Bus Queue, Azure documentDB, and Slack Channel.
   * When running containers, you must update the below environment variables
-  * To save time, you can pull base container from Docker Hub and build the containers in advance 
+  * To save time, you can pull the containers from Docker Hub or build in advance 
 
   ```
   docker pull chzbrgr71/acs-simulator-demo:base
+  docker pull chzbrgr71/acs-simulator-demo:simulator
+  docker pull chzbrgr71/acs-simulator-demo:retriever
+  docker pull chzbrgr71/acs-simulator-demo:slacker
   ```
   
-  * Build the 3 containers (simulator, retriever, slacker). Or run `setup.sh`:
+  * To build from source (or run `setup.sh`):
   
   ```
   docker build -t chzbrgr71/acs-simulator-demo:simulator simulator
@@ -38,7 +41,7 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
   docker-compose stop
   ```
   
-  * Environment variables:
+  * Environment variables (set in `docker run` or `docker-compose.yml`):
     * AZURE_SB_SERVICE_NAMESPACE
     * AZURE_SB_SHARED_ACCESS_KEY_NAME
     * AZURE_SB_SHARED_ACCESS_KEY
@@ -49,9 +52,9 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
 ## Running the demo
 
   * Use `docker-compose scale` to increase/decrease each container and monitor queue length.
-  * Containers will be pulled from Docker Hub.
   * With Slack open, the slacker container will provide status of the queue every few seconds.
   * Future will scale up/down in Azure Container Service.
+  * Azure DocumentDB will contain documents with simulated statistics recorded.
   
 ## To do
 
