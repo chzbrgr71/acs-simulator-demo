@@ -60,10 +60,11 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
 
 ## Running in Azure Container Service
 
-  * For a Swarm cluster, the operation is the same by setting the environment variable for the Swarm Master (export DOCKER_HOST=:2375)
-  * For Mesos, use the acs-simulator-demo.json file and update the environment variables
-  * Once your SSH tunnel for port 80 has been created, run the containers with the following command:
+  * Setup Azure Container Service as described [here](https://azure.microsoft.com/en-us/documentation/articles/container-service-deployment)
+    * For a Swarm cluster, the operation is the same by setting the environment variable for the Swarm Master (export DOCKER_HOST=:2375)
+    * For Mesos, use the acs-simulator-demo.json file and update the environment variables
+    * Once your SSH tunnel for port 80 has been created, run the containers with the following command:
   
-  ```
-  curl -X POST http://localhost/marathon/v2/groups -d @acs-simulator-demo.json -H "Content-type: application/json"
-  ```
+    ```
+    curl -X POST http://localhost/marathon/v2/groups -d @acs-simulator-demo.json -H "Content-type: application/json"
+    ```
