@@ -13,6 +13,8 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
 ## How to setup
  
   * Create an Azure Service Bus Queue, Azure documentDB, and Slack Channel.
+    * Service Bus namespace is called "acslogging" and the queue is called "statistics"
+    * DocumentDB database is "acs-demo" and the collection is called "stats" 
   * When running containers, you must update the below environment variables
   * To save time, you can pull the containers from Docker Hub or build in advance 
 
@@ -55,10 +57,13 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
   * With Slack open, the slacker container will provide status of the queue every few seconds.
   * Future will scale up/down in Azure Container Service.
   * Azure DocumentDB will contain documents with simulated statistics recorded.
-  
-## To do
 
-  - [x] Create initial container images and test on single docker vm
-  - [x] Need to create environment variables for Azure queues, documentDB, etc. Env variables will be declared in container definition
-  - [ ] Integrate with ACS
-  - [ ] Create Azure Web App to display results
+## Running in Azure Container Service
+
+  * For a Swarm cluster, the operation is the same by setting the environment variable for the Swarm Master (export DOCKER_HOST=:2375)
+  * For Mesos, use the acs-simulator-demo.json file and update the environment variables
+  * Once your SSH tunnel for port 80 has been created, run the containers with the following command:
+  
+  ```
+  curl -X POST http://localhost/marathon/v2/groups -d @acs-simulator-demo.json -H "Content-type: application/json"
+  ```

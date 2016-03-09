@@ -1,0 +1,81 @@
+{
+    "id": "acs-simulator-demo",
+    "groups": [
+        {
+            "id": "apps",
+            "apps": [
+            {
+                "id": "slacker",
+                "cpus": 0.25,
+                "mem": 64.0,
+                "instances": 1,
+                "container": {
+                    "docker": {
+                    "forcePullImage": false,
+                    "image": "chzbrgr71/acs-simulator-demo:slacker",
+                    "network": "BRIDGE",
+                    "parameters": [],
+                    "privileged": false
+                    },
+                    "type": "DOCKER",
+                    "volumes": []
+                },
+                "env": {
+                    "AZURE_SB_SERVICE_NAMESPACE": "",
+                    "AZURE_SB_SHARED_ACCESS_KEY": "",
+                    "AZURE_SB_SHARED_ACCESS_KEY_NAME": "",
+                    "SLACK_CHANNEL": ""
+                }
+            },
+            {
+                "id": "simulator",
+                "cpus": 0.25,
+                "mem": 64.0,
+                "instances": 4,
+                "container": {
+                    "docker": {
+                    "forcePullImage": false,
+                    "image": "chzbrgr71/acs-simulator-demo:simulator",
+                    "network": "BRIDGE",
+                    "parameters": [],
+                    "privileged": false
+                    },
+                    "type": "DOCKER",
+                    "volumes": []
+                },
+                "env": {
+                    "AZURE_SB_SERVICE_NAMESPACE": "",
+                    "AZURE_SB_SHARED_ACCESS_KEY": "",
+                    "AZURE_SB_SHARED_ACCESS_KEY_NAME": "",
+                    "SLACK_CHANNEL": ""
+                }
+            },
+            {
+                "id": "retriever",
+                "cpus": 0.25,
+                "mem": 64.0,
+                "instances": 1,
+                "container": {
+                    "docker": {
+                    "forcePullImage": false,
+                    "image": "chzbrgr71/acs-simulator-demo:retriever",
+                    "network": "BRIDGE",
+                    "parameters": [],
+                    "privileged": false
+                    },
+                    "type": "DOCKER",
+                    "volumes": []
+                },
+                "env": {
+                    "AZURE_SB_SERVICE_NAMESPACE": "",
+                    "AZURE_SB_SHARED_ACCESS_KEY": "",
+                    "AZURE_SB_SHARED_ACCESS_KEY_NAME": "",
+                    "SLACK_CHANNEL": "",
+                    "AZURE_DOCUMENTDB_URI": "",
+                    "AZURE_DOCUMENTDB_KEY": ""
+                }
+            }
+    ]
+        }
+  ]
+    }
