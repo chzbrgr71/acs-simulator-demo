@@ -8,7 +8,7 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
   * retriever: picks up messages from Azure SB queue and writes to Azure DocumentDB
   * slacker: sends messages to Slack Channel for monitoring of demo
   * web_app: TBD. Azure Web App to view summary results from DocumentDB
-  * Note: Each container based on a "base" container with Azure Python libraries loaded: In [Docker Hub](https://hub.docker.com/r/chzbrgr71/acs-simulator-demo) 
+  * Note: Each container based on a "base" container with Azure Python libraries loaded: In [Docker Hub](https://hub.docker.com/r/chzbrgr71/acs-demo-base) 
 
 ## How to setup
  
@@ -19,26 +19,25 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
   * To save time, you can pull the containers from Docker Hub or build in advance 
 
   ```
-  docker pull chzbrgr71/acs-simulator-demo:base
-  docker pull chzbrgr71/acs-simulator-demo:simulator
-  docker pull chzbrgr71/acs-simulator-demo:retriever
-  docker pull chzbrgr71/acs-simulator-demo:slacker
+  docker pull chzbrgr71/acs-demo-simulator
+  docker pull chzbrgr71/acs-demo-retriever
+  docker pull chzbrgr71/acs-demo-slacker
   ```
   
   * To build from source (or run `setup.sh`):
   
   ```
-  docker build -t chzbrgr71/acs-simulator-demo:simulator simulator
-  docker build -t chzbrgr71/acs-simulator-demo:retriever retriever
-  docker build -t chzbrgr71/acs-simulator-demo:slacker slacker
+  docker build -t chzbrgr71/acs-demo-simulator simulator
+  docker build -t chzbrgr71/acs-demo-retriever retriever
+  docker build -t chzbrgr71/acs-demo-slacker slacker
   ```
   
   * Run docker-compose. With 4 simulators and 1 retriever, the queue should increase. 
   
   ```
   docker-compose up -d
-  docker-compose scale simulate=4
-  docker-compose scale retrieve=1
+  docker-compose scale simulator=4
+  docker-compose scale retriever=1
   
   docker-compose stop
   ```
@@ -61,7 +60,7 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
 
   * Setup Azure Container Service as described [here](https://azure.microsoft.com/en-us/documentation/articles/container-service-deployment)
     * For a Swarm cluster, the operation is the same as above. Direct docker commands to Swarm Master
-    * For Mesos, use the acs-simulator-demo.json file and update the environment variables
+    * For Mesos, use the `acs-simulator-demo.json` file and update the environment variables
     * Once your SSH tunnel for port 80 has been created, run the containers with the following command:
   
       ```

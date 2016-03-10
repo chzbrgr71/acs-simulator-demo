@@ -12,7 +12,7 @@
                 "container": {
                     "docker": {
                     "forcePullImage": false,
-                    "image": "chzbrgr71/acs-simulator-demo:slacker",
+                    "image": "chzbrgr71/acs-demo-slacker",
                     "network": "BRIDGE",
                     "parameters": [],
                     "privileged": false
@@ -21,10 +21,10 @@
                     "volumes": []
                 },
                 "env": {
-                    "AZURE_SB_SERVICE_NAMESPACE": "",
-                    "AZURE_SB_SHARED_ACCESS_KEY": "",
-                    "AZURE_SB_SHARED_ACCESS_KEY_NAME": "",
-                    "SLACK_CHANNEL": ""
+                    "AZURE_SB_SERVICE_NAMESPACE": "<add your value here>",
+                    "AZURE_SB_SHARED_ACCESS_KEY": "<add your value here>",
+                    "AZURE_SB_SHARED_ACCESS_KEY_NAME": "<add your value here>",
+                    "SLACK_CHANNEL": "<add your value here>"
                 }
             },
             {
@@ -35,7 +35,7 @@
                 "container": {
                     "docker": {
                     "forcePullImage": false,
-                    "image": "chzbrgr71/acs-simulator-demo:simulator",
+                    "image": "chzbrgr71/acs-demo-simulator",
                     "network": "BRIDGE",
                     "parameters": [],
                     "privileged": false
@@ -44,10 +44,10 @@
                     "volumes": []
                 },
                 "env": {
-                    "AZURE_SB_SERVICE_NAMESPACE": "",
-                    "AZURE_SB_SHARED_ACCESS_KEY": "",
-                    "AZURE_SB_SHARED_ACCESS_KEY_NAME": "",
-                    "SLACK_CHANNEL": ""
+                    "AZURE_SB_SERVICE_NAMESPACE": "<add your value here>",
+                    "AZURE_SB_SHARED_ACCESS_KEY": "<add your value here>",
+                    "AZURE_SB_SHARED_ACCESS_KEY_NAME": "<add your value here>",
+                    "SLACK_CHANNEL": "<add your value here>"
                 }
             },
             {
@@ -58,7 +58,7 @@
                 "container": {
                     "docker": {
                     "forcePullImage": false,
-                    "image": "chzbrgr71/acs-simulator-demo:retriever",
+                    "image": "chzbrgr71/acs-demo-retriever",
                     "network": "BRIDGE",
                     "parameters": [],
                     "privileged": false
@@ -67,12 +67,12 @@
                     "volumes": []
                 },
                 "env": {
-                    "AZURE_SB_SERVICE_NAMESPACE": "",
-                    "AZURE_SB_SHARED_ACCESS_KEY": "",
-                    "AZURE_SB_SHARED_ACCESS_KEY_NAME": "",
-                    "SLACK_CHANNEL": "",
-                    "AZURE_DOCUMENTDB_URI": "",
-                    "AZURE_DOCUMENTDB_KEY": ""
+                    "AZURE_SB_SERVICE_NAMESPACE": "<add your value here>",
+                    "AZURE_SB_SHARED_ACCESS_KEY": "<add your value here>",
+                    "AZURE_SB_SHARED_ACCESS_KEY_NAME": "<add your value here>",
+                    "SLACK_CHANNEL": "<add your value here>",
+                    "AZURE_DOCUMENTDB_URI": "<add your value here>",
+                    "AZURE_DOCUMENTDB_KEY": "<add your value here>"
                 }
             }
     ]

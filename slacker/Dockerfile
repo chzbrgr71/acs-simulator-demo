@@ -1,4 +1,4 @@
-FROM chzbrgr71/acs-simulator-demo:base
+FROM chzbrgr71/acs-demo-base
 
 COPY src src
 
