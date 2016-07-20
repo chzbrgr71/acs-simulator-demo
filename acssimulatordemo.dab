@@ -9,7 +9,7 @@
         "AZURE_SB_SERVICE_NAMESPACE=acslogging", 
         "AZURE_SB_SHARED_ACCESS_KEY_NAME=RootManageSharedAccessKey"
       ], 
-      "Image": "chzbrgr71/acs-demo-retriever@sha256:5fc387490b365ce02d2ac43c34148d5780f243f378b73cec30563f16c2a5b789", 
+      "Image": "chzbrgr7/acs-demo-retriever@sha256:5fc387490b365ce02d2ac43c34148d5780f243f378b73cec30563f16c2a5b789", 
       "Networks": []
     }, 
     "simulator": {
