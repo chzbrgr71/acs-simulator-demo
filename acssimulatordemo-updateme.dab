@@ -1,0 +1,37 @@
+{
+  "Services": {
+    "retriever": {
+      "Env": [
+        "AZURE_SB_SHARED_ACCESS_KEY=<add your value here>", 
+        "AZURE_DOCUMENTDB_KEY=<add your value here>", 
+        "AZURE_DOCUMENTDB_URI=<add your value here>", 
+        "SLACK_CHANNEL=<add your value here>", 
+        "AZURE_SB_SERVICE_NAMESPACE=<add your value here>", 
+        "AZURE_SB_SHARED_ACCESS_KEY_NAME=<add your value here>"
+      ], 
+      "Image": "chzbrgr71/acs-demo-retriever@sha256:5fc387490b365ce02d2ac43c34148d5780f243f378b73cec30563f16c2a5b789", 
+      "Networks": []
+    }, 
+    "simulator": {
+      "Env": [
+        "AZURE_SB_SHARED_ACCESS_KEY=<add your value here>", 
+        "AZURE_SB_SERVICE_NAMESPACE=<add your value here>",  
+        "AZURE_SB_SHARED_ACCESS_KEY_NAME=<add your value here>" 
+        "SLACK_CHANNEL=<add your value here>",
+      ], 
+      "Image": "chzbrgr71/acs-demo-simulator@sha256:922779eb0c85fe5a346772708f0c032bfbfd32867386836c194b9c6156230947", 
+      "Networks": []
+    }, 
+    "slacker": {
+      "Env": [
+        "AZURE_SB_SHARED_ACCESS_KEY=<add your value here>", 
+        "AZURE_SB_SERVICE_NAMESPACE=<add your value here>",  
+        "AZURE_SB_SHARED_ACCESS_KEY_NAME=<add your value here>" 
+        "SLACK_CHANNEL=<add your value here>",
+      ], 
+      "Image": "chzbrgr71/acs-demo-slacker@sha256:9f056ce8165dacb1a5b81d6c417f1fe37cac29360ef5f024c3427ba390b270d0", 
+      "Networks": []
+    }
+  }, 
+  "Version": "0.1"
+}
