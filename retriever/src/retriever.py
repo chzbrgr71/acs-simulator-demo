@@ -35,6 +35,7 @@ def retrieve():
     while True:
         sbqueue = sb_service.get_queue('statistics')
         queuelength = sbqueue.message_count
+        log.info("Q length: " + str(queuelength))
         if queuelength<1:
             log.info("Queue is empty")
         else:
