@@ -20,8 +20,4 @@
     </CodePackage>
     <ConfigPackage Name="simulator.config" Version="1.0" />
     <DataPackage Name="simulator.data" Version="1.0" />
-  <Resources>
-    <Endpoints>
-    </Endpoints>
-  </Resources>
 </ServiceManifest> 

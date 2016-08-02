@@ -22,8 +22,4 @@
     </CodePackage>
     <ConfigPackage Name="retriever.config" Version="1.0" />
     <DataPackage Name="retriever.data" Version="1.0" />
-  <Resources>
-    <Endpoints>
-    </Endpoints>
-  </Resources>
 </ServiceManifest> 
