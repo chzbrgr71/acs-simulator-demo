@@ -1,19 +1,19 @@
 slacker:
-  image: chzbrgr71/acs-demo-slacker
+  image: chzbrgr71/acs-demo-slacker:2
   environment:
     - AZURE_SB_SERVICE_NAMESPACE=<add your value here>
     - AZURE_SB_SHARED_ACCESS_KEY_NAME=<add your value here>
     - AZURE_SB_SHARED_ACCESS_KEY=<add your value here>
     - SLACK_CHANNEL=<add your value here>
 simulator:
-  image: chzbrgr71/acs-demo-simulator
+  image: chzbrgr71/acs-demo-simulator:2
   environment:  
     - AZURE_SB_SERVICE_NAMESPACE=<add your value here>
     - AZURE_SB_SHARED_ACCESS_KEY_NAME=<add your value here>
     - AZURE_SB_SHARED_ACCESS_KEY=<add your value here>
     - SLACK_CHANNEL=<add your value here>
 retriever:
-  image: chzbrgr71/acs-demo-retriever
+  image: chzbrgr71/acs-demo-retriever:2
   environment:  
     - AZURE_SB_SERVICE_NAMESPACE=<add your value here>
     - AZURE_SB_SHARED_ACCESS_KEY_NAME=<add your value here>

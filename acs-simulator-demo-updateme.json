@@ -12,7 +12,7 @@
                 "container": {
                     "docker": {
                     "forcePullImage": false,
-                    "image": "chzbrgr71/acs-demo-slacker",
+                    "image": "chzbrgr71/acs-demo-slacker:2",
                     "network": "BRIDGE",
                     "parameters": [],
                     "privileged": false
@@ -35,7 +35,7 @@
                 "container": {
                     "docker": {
                     "forcePullImage": false,
-                    "image": "chzbrgr71/acs-demo-simulator",
+                    "image": "chzbrgr71/acs-demo-simulator:2",
                     "network": "BRIDGE",
                     "parameters": [],
                     "privileged": false
@@ -58,7 +58,7 @@
                 "container": {
                     "docker": {
                     "forcePullImage": false,
-                    "image": "chzbrgr71/acs-demo-retriever",
+                    "image": "chzbrgr71/acs-demo-retriever:2",
                     "network": "BRIDGE",
                     "parameters": [],
                     "privileged": false

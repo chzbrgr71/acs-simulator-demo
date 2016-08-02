@@ -1,0 +1,26 @@
+<ApplicationManifest ApplicationTypeName="sf-linux-simulator" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Description>chzbrgr71 simulator demo with 3 containers</Description>
+    <Parameters>
+        <Parameter Name="ServiceInstanceCount" DefaultValue="1"></Parameter>
+    </Parameters>
+    <ServiceManifestImport>
+        <ServiceManifestRef ServiceManifestName="slacker" ServiceManifestVersion="1.0"/>
+    </ServiceManifestImport>
+    <ServiceManifestImport>
+        <ServiceManifestRef ServiceManifestName="simulator" ServiceManifestVersion="1.0"/>
+    </ServiceManifestImport>
+    <ServiceManifestImport>
+        <ServiceManifestRef ServiceManifestName="retriever" ServiceManifestVersion="1.0"/>
+    </ServiceManifestImport>
+    <ServiceTemplates>
+        <StatelessService ServiceTypeName="slacker" InstanceCount="1">
+            <SingletonPartition />
+        </StatelessService>
+        <StatelessService ServiceTypeName="simulator" InstanceCount="3">
+            <SingletonPartition />
+        </StatelessService>
+        <StatelessService ServiceTypeName="retriever" InstanceCount="1">
+            <SingletonPartition />
+        </StatelessService>  
+    </ServiceTemplates>
+</ApplicationManifest>

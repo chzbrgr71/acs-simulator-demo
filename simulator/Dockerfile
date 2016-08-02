@@ -1,4 +1,4 @@
-FROM chzbrgr71/acs-demo-base
+FROM chzbrgr71/acs-demo-base:2
 
 COPY src src
 

@@ -7,7 +7,6 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
   * simulator: creates random logging activity and writes it to an Azure Service Bus Queue
   * retriever: picks up messages from Azure SB queue and writes to Azure DocumentDB
   * slacker: sends messages to Slack Channel for monitoring of demo
-  * web_app: TBD. Azure Web App to view summary results from DocumentDB
   * Note: Each container based on a "base" container with Azure Python libraries loaded: In [Docker Hub](https://hub.docker.com/r/chzbrgr71/acs-demo-base) 
 
 ## How to setup
@@ -19,17 +18,17 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
   * To save time, you can pull the containers from Docker Hub or build in advance 
   * Added config for Marathon and Docker bundles
   ```
-  docker pull chzbrgr71/acs-demo-simulator
-  docker pull chzbrgr71/acs-demo-retriever
-  docker pull chzbrgr71/acs-demo-slacker
+  docker pull chzbrgr71/acs-demo-simulator:2
+  docker pull chzbrgr71/acs-demo-retriever:2
+  docker pull chzbrgr71/acs-demo-slacker:2
   ```
   
   * To build from source (or run `setup.sh`):
   
   ```
-  docker build -t chzbrgr71/acs-demo-simulator simulator
-  docker build -t chzbrgr71/acs-demo-retriever retriever
-  docker build -t chzbrgr71/acs-demo-slacker slacker
+  docker build -t chzbrgr71/acs-demo-simulator:2 simulator
+  docker build -t chzbrgr71/acs-demo-retriever:2 retriever
+  docker build -t chzbrgr71/acs-demo-slacker:2 slacker
   ```
   
   * Run docker-compose. With 4 simulators and 1 retriever, the queue should increase. 

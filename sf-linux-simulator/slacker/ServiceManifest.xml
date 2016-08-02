@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceManifest Name="slacker" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Description>chzbrgr71 slacker container</Description>
+    <ServiceTypes>
+        <StatelessServiceType ServiceTypeName="slacker"  UseImplicitHost="true"/>
+    </ServiceTypes>
+    <CodePackage Name="slacker.code" Version="1.0">
+        <EntryPoint>
+          <ContainerHost>
+            <ImageName>chzbrgr71/acs-demo-slacker:2</ImageName>
+            <Commands></Commands>
+          </ContainerHost>
+        </EntryPoint>
+      <EnvironmentVariables>
+        <EnvironmentVariable Name="AZURE_SB_SERVICE_NAMESPACE" Value="acslogging"/>
+        <EnvironmentVariable Name="AZURE_SB_SHARED_ACCESS_KEY_NAME" Value="RootManageSharedAccessKey"/>
+        <EnvironmentVariable Name="AZURE_SB_SHARED_ACCESS_KEY" Value="gnLZ2ixKkXng7rNvaCbgl9ucxsEKK7vuD5QkLl1iemM="/>
+        <EnvironmentVariable Name="SLACK_CHANNEL" Value="https://hooks.slack.com/services/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"/>
+      </EnvironmentVariables>
+    </CodePackage>
+    <ConfigPackage Name="slacker.config" Version="1.0" />
+    <DataPackage Name="slacker.data" Version="1.0" />
+  <Resources>
+    <Endpoints>
+    </Endpoints>
+  </Resources>
+</ServiceManifest> 
