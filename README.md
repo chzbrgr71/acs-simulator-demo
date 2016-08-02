@@ -17,7 +17,7 @@ NOTE: Thanks to @rgardler for inspiration and initial source code.
     * DocumentDB database is "acs-demo" and the collection is called "stats" 
   * When running containers, you must update the below environment variables
   * To save time, you can pull the containers from Docker Hub or build in advance 
-
+  * Added config for Marathon and Docker bundles
   ```
   docker pull chzbrgr71/acs-demo-simulator
   docker pull chzbrgr71/acs-demo-retriever
