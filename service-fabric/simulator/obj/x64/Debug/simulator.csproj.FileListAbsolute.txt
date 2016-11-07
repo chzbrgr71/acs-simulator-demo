@@ -18,3 +18,6 @@ C:\SF\acs-simulator-demo\acs-demo\simulator\bin\x64\Debug\en-us\Microsoft.Servic
 C:\SF\acs-simulator-demo\acs-demo\simulator\obj\x64\Debug\simulator.csprojResolveAssemblyReference.cache
 C:\SF\acs-simulator-demo\acs-demo\simulator\obj\x64\Debug\simulator.exe
 C:\SF\acs-simulator-demo\acs-demo\simulator\obj\x64\Debug\simulator.pdb
+\\Mac\Home\Documents\Source\acs-simulator-demo\service-fabric\simulator\bin\x64\Debug\simulator.exe.config
+\\Mac\Home\Documents\Source\acs-simulator-demo\service-fabric\simulator\obj\x64\Debug\simulator.exe
+\\Mac\Home\Documents\Source\acs-simulator-demo\service-fabric\simulator\obj\x64\Debug\simulator.pdb
